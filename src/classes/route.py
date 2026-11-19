@@ -14,16 +14,7 @@ class Route:
      route_color: Optional[str] = None
      route_text_color: Optional[str] = None
 
-     
-     def populate_route(self):
-          query = f"""
-               SELECT *
-               FROM [ROUTES]
-               WHERE route_id = '{self.route_id}'
-               LIMIT 1"""
-          result_array = connection.query(query)
-          dataframe_result_object = Route(**result_array.iloc[0].to_dict())
-
-          # Wipes out current attributes and copies the new object's attributes
-          self.__dict__.clear()
-          self.__dict__.update(dataframe_result_object.__dict__)
+     # init class to create object from dictionary.
+     def __init__(self, dictionary):
+          for key, value in dictionary.items():
+               setattr(self, key, value)
