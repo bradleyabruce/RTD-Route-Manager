@@ -41,8 +41,9 @@ def replace_sql_placeholders_with_data_file_names(sql):
 
 
 #**************************************
-# query
-#    - Format sql and then use duckdb to query the data tables.
+# query()
+#    - Replaces keywords in given 'sql' statement to make it compatible with duckdb.
+#    - Uses that sql statement to return a dataframe object.
 #**************************************
 def query(sql):
      sql = replace_sql_placeholders_with_data_file_names(sql)
@@ -52,3 +53,28 @@ def query(sql):
      conn.close()
      
      return result
+
+
+#**************************************
+# query_into_object()
+#    - Returns query() function's result parsed into a given object.
+#**************************************
+def query_into_object(sql_query, datatype):
+     query_result = query(sql_query)
+     query_results_count = len(query_result)
+     
+     # Return None if query returned no results.
+     if query_results_count == 0:
+          return None
+
+     # Return single object if query returned 1 result.
+     elif query_results_count == 1:
+          query_result_dictionary = query_result.iloc[0].to_dict()
+          return datatype(query_result_dictionary)
+     
+     # Return array of objects if query returned multiple results.
+     # Not yet implemented.
+     else:
+          return None
+          
+          
