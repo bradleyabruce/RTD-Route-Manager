@@ -1,6 +1,5 @@
 from dataclasses import dataclass
 from typing import Optional
-import utils.connection as connection
 
 @dataclass
 class Route:

@@ -16,6 +16,6 @@ def get_route_by_route_id(route_id):
         FROM [ROUTES]
         WHERE route_id = '{route_id}'
         LIMIT 1"""
+    
     route = connection.query_into_object(route_query, Route)
-
     return route
