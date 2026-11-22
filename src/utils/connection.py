@@ -75,6 +75,12 @@ def query_into_object(sql_query, datatype):
      # Return array of objects if query returned multiple results.
      # Not yet implemented.
      else:
-          return None
-          
-          
+          objectArray = []
+
+          # Loop through every result, convert it to the requested type, and add it to our array to return.
+          for result_index in range(query_results_count):
+               result_dictionary = query_result.iloc[result_index].to_dict()
+               result_object = datatype(result_dictionary)
+               objectArray.append(result_object)
+
+          return objectArray

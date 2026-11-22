@@ -2,7 +2,6 @@ import api.route_api as route_api
 import api.trip_api as trip_api
 
 route = route_api.get_route_by_route_id(15)
-
 print(route.agency_id)
 print(route.route_color)
 print(route.route_desc)
@@ -20,3 +19,7 @@ print(trip.block_id)
 print(trip.direction_id)
 print(trip.trip_headsign)
 print(trip.shape_id)
+
+trips = trip_api.get_all_trips_for_route_id(15)
+for trip in trips:
+    print(trip.shape_id)
