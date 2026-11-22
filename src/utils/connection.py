@@ -46,13 +46,17 @@ def replace_sql_placeholders_with_data_file_names(sql):
 #    - Uses that sql statement to return a dataframe object.
 #**************************************
 def query(sql):
-     sql = replace_sql_placeholders_with_data_file_names(sql)
+     try:
+          sql = replace_sql_placeholders_with_data_file_names(sql)
      
-     conn = duckdb.connect()
-     result = conn.sql(sql).df()
-     conn.close()
+          conn = duckdb.connect()
+          result = conn.sql(sql).df()
+          conn.close()
      
-     return result
+          return result
+
+     except duckdb.BinderException as bind_exception:
+          print(f'''Connection.Query() - An error occured: {bind_exception}''')
 
 
 #**************************************
