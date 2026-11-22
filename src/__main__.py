@@ -1,5 +1,6 @@
 import api.route_api as route_api
 import api.trip_api as trip_api
+import api.stop_api as stop_api
 
 route = route_api.get_route_by_route_id(15)
 print(route.agency_id)
@@ -21,5 +22,7 @@ print(trip.trip_headsign)
 print(trip.shape_id)
 
 trips = trip_api.get_all_trips_for_route_id(15)
-for trip in trips:
-    print(trip.shape_id)
+print(len(trips))
+
+stop = stop_api.get_stop_by_stop_id(10007)
+print(stop.wheelchair_boarding)
