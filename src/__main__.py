@@ -1,4 +1,5 @@
 import api.route_api as route_api
+import api.trip_api as trip_api
 
 route = route_api.get_route_by_route_id(15)
 
@@ -11,3 +12,11 @@ print(route.route_short_name)
 print(route.route_text_color)
 print(route.route_type)
 print(route.route_url)
+
+trip = trip_api.get_trip_by_trip_id(116031094)
+print(trip.trip_id)
+print(trip.route_id)
+print(trip.block_id)
+print(trip.direction_id)
+print(trip.trip_headsign)
+print(trip.shape_id)
