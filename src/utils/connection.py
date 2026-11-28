@@ -65,6 +65,10 @@ def query(sql):
 #**************************************
 def query_into_object(sql_query, datatype):
      query_result = query(sql_query)
+
+     if query_result is None:
+          return None
+
      query_results_count = len(query_result)
      
      # Return None if query returned no results.

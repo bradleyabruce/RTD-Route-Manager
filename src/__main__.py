@@ -1,3 +1,4 @@
+import api.service_api as service_api
 import api.route_api as route_api
 import api.trip_api as trip_api
 import api.stop_api as stop_api
@@ -26,3 +27,7 @@ print(len(trips))
 
 stop = stop_api.get_stop_by_stop_id(10007)
 print(stop.wheelchair_boarding)
+
+active_days = service_api.get_days_for_service("WK")
+for day in active_days:
+    print(day)
