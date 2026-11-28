@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from classes.service import Service
 
 @dataclass
 class Trip:
@@ -9,6 +10,7 @@ class Trip:
     direction_id: str
     block_id: str
     shape_id: str
+    service: Service
 
     # init class to create object from dictionary.
     def __init__(self, dictionary):
